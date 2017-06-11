@@ -115,10 +115,12 @@ void replay()
 }
 int read()
 {
-	FILE *in;   
-	char data;
+	int e = e1 + e2;
+	int k = 0;
+	FILE *in;
 	system("clear");
-	printf("Hello %s\n\n", name);
+	printf("Hello $s\n\n", name)
+	char data;
 	in = fopen("map.txt", "r");   
 	for(int n=0 ; n<5; n++){
                 for(int i=0 ; i<30; i++){
@@ -131,13 +133,14 @@ int read()
 					else if ( data == 'e')
 					break;			
 					else if( data == '$')
-						++e;
+						++e1;
 					else if( data == 'O'){
-						++e;
+						++e2;
+						++k;
 						Floor[n][i][j] = 1;
+						a[n] = k;
 					}
 					map[n][i][j] = data;
-					answer[n][i][j] = data;
 					Undo[0][n][i][j] = data;
 					Undo[6][n][i][j] = data;
 					}		
@@ -147,6 +150,7 @@ int read()
                        			
 					}
         				}
+					k = 0;
 					}
 				
 	fclose(in);
